@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="PostgreSQL - postgres@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.6">
+    <database id="1" name="postgres">
+      <object-id>12401</object-id>
+      <visible>1</visible>
+    </database>
+    <database id="2" name="MyBD">
+      <object-id>16579</object-id>
+    </database>
+    <schema id="3" parent="1" name="public">
+      <object-id>2200</object-id>
+      <visible>1</visible>
+      <introspection-state-number>983</introspection-state-number>
+      <introspection-timestamp>2016-11-30.17:43:59.179</introspection-timestamp>
+    </schema>
+    <schema id="4" parent="1" name="pg_catalog">
+      <object-id>11</object-id>
+    </schema>
+    <schema id="5" parent="1" name="pg_toast">
+      <object-id>99</object-id>
+    </schema>
+    <schema id="6" parent="1" name="pg_temp_1">
+      <object-id>11848</object-id>
+    </schema>
+    <schema id="7" parent="1" name="pg_toast_temp_1">
+      <object-id>11849</object-id>
+    </schema>
+    <schema id="8" parent="1" name="information_schema">
+      <object-id>12113</object-id>
+    </schema>
+    <schema id="9" parent="1" name="pgagent">
+      <object-id>16393</object-id>
+    </schema>
+    <schema id="10" parent="1" name="pg_temp_2">
+      <object-id>16564</object-id>
+    </schema>
+    <schema id="11" parent="1" name="pg_toast_temp_2">
+      <object-id>16565</object-id>
+    </schema>
+    <sequence id="12" parent="3" name="books_id_seq">
+      <object-id>16713</object-id>
+      <state-number>968</state-number>
+    </sequence>
+    <sequence id="13" parent="3" name="clients_id_seq">
+      <object-id>16662</object-id>
+      <state-number>926</state-number>
+    </sequence>
+    <sequence id="14" parent="3" name="lection_id_lec_seq">
+      <object-id>16652</object-id>
+      <state-number>901</state-number>
+    </sequence>
+    <sequence id="15" parent="3" name="lection_id_seq">
+      <object-id>16621</object-id>
+      <state-number>875</state-number>
+    </sequence>
+    <sequence id="16" parent="3" name="students_id_std_seq">
+      <object-id>16649</object-id>
+      <state-number>891</state-number>
+    </sequence>
+    <sequence id="17" parent="3" name="studnew_id_seq">
+      <object-id>16724</object-id>
+      <state-number>970</state-number>
+    </sequence>
+    <sequence id="18" parent="3" name="table_name_id_seq">
+      <object-id>16604</object-id>
+      <state-number>871</state-number>
+    </sequence>
+    <table id="19" parent="3" name="books">
+      <object-id>16715</object-id>
+      <state-number>968</state-number>
+    </table>
+    <table id="20" parent="3" name="clients">
+      <object-id>16664</object-id>
+      <state-number>960</state-number>
+    </table>
+    <table id="21" parent="3" name="lection">
+      <object-id>16623</object-id>
+      <state-number>921</state-number>
+    </table>
+    <table id="22" parent="3" name="stdlec">
+      <object-id>16632</object-id>
+      <state-number>883</state-number>
+    </table>
+    <table id="23" parent="3" name="students">
+      <object-id>16606</object-id>
+      <state-number>881</state-number>
+    </table>
+    <table id="24" parent="3" name="studnew">
+      <object-id>16726</object-id>
+      <state-number>970</state-number>
+    </table>
+    <table id="25" parent="3" name="works">
+      <object-id>16595</object-id>
+      <state-number>848</state-number>
+    </table>
+    <column id="26" parent="19" name="id">
+      <state-number>968</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+      <default-expression>nextval(&apos;books_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="27" parent="19" name="book_title">
+      <state-number>968</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="28" parent="19" name="author">
+      <state-number>968</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="29" parent="19" name="price">
+      <state-number>968</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+    </column>
+    <index id="30" parent="19" name="books_pkey">
+      <object-id>16722</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="31" parent="19" name="books_pkey">
+      <object-id>16723</object-id>
+      <columns>id</columns>
+      <underlying-index>books_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="32" parent="20" name="login">
+      <state-number>926</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="33" parent="20" name="pass">
+      <state-number>959</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="34" parent="20" name="name">
+      <state-number>926</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="35" parent="20" name="firstname">
+      <state-number>926</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="36" parent="20" name="id">
+      <state-number>926</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+      <default-expression>nextval(&apos;clients_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="37" parent="20" name="status">
+      <state-number>934</state-number>
+      <data-type>integer|0</data-type>
+      <default-expression>1</default-expression>
+    </column>
+    <column id="38" parent="20" name="sals">
+      <state-number>960</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+      <default-expression>1</default-expression>
+    </column>
+    <index id="39" parent="20" name="clients_login_uindex">
+      <object-id>16695</object-id>
+      <columns>login</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="40" parent="20" name="clients_pkey">
+      <object-id>16671</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="41" parent="20" name="clients_pkey">
+      <object-id>16672</object-id>
+      <columns>id</columns>
+      <underlying-index>clients_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="42" parent="21" name="id_lec">
+      <state-number>904</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+    </column>
+    <column id="43" parent="21" name="temalek">
+      <state-number>875</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="44" parent="21" name="date">
+      <state-number>921</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <index id="45" parent="21" name="lection_pkey">
+      <object-id>16630</object-id>
+      <columns>id_lec</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="46" parent="21" name="lection_pkey">
+      <object-id>16631</object-id>
+      <columns>id_lec</columns>
+      <underlying-index>lection_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="47" parent="22" name="id_std">
+      <state-number>880</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+    </column>
+    <column id="48" parent="22" name="id_lec">
+      <state-number>885</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+    </column>
+    <index id="49" parent="22" name="stdlec_id_lec_pk">
+      <object-id>16647</object-id>
+      <columns>id_lec
+id_std</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="50" parent="22" name="stdlec_id_lec_pk">
+      <object-id>16648</object-id>
+      <columns>id_lec
+id_std</columns>
+      <underlying-index>stdlec_id_lec_pk</underlying-index>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="51" parent="22" name="id_std">
+      <object-id>16637</object-id>
+      <columns>id_std</columns>
+      <ref-key>~.students.table_name_pkey</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="52" parent="22" name="stdlec_lection_id_lec_fk">
+      <object-id>16642</object-id>
+      <columns>id_lec</columns>
+      <ref-key>~.lection.lection_pkey</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="53" parent="23" name="name">
+      <state-number>871</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="54" parent="23" name="famil">
+      <state-number>871</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="55" parent="23" name="otchestvo">
+      <state-number>871</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="56" parent="23" name="pol">
+      <state-number>871</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="57" parent="23" name="groopnom">
+      <state-number>871</state-number>
+      <data-type>integer|0</data-type>
+    </column>
+    <column id="58" parent="23" name="id_std">
+      <state-number>892</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+      <default-expression>nextval(&apos;students_id_std_seq&apos;::regclass)</default-expression>
+    </column>
+    <index id="59" parent="23" name="table_name_pkey">
+      <object-id>16613</object-id>
+      <columns>id_std</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="60" parent="23" name="table_name_pkey">
+      <object-id>16614</object-id>
+      <columns>id_std</columns>
+      <underlying-index>table_name_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="61" parent="24" name="id">
+      <state-number>983</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+    </column>
+    <column id="62" parent="24" name="namefull">
+      <state-number>970</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="63" parent="24" name="pol">
+      <state-number>970</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="64" parent="24" name="groop">
+      <state-number>970</state-number>
+      <data-type>integer|0</data-type>
+    </column>
+    <index id="65" parent="24" name="studNew_id_uindex">
+      <object-id>16735</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="66" parent="24" name="studnew_pkey">
+      <object-id>16733</object-id>
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="67" parent="24" name="studnew_pkey">
+      <object-id>16734</object-id>
+      <columns>id</columns>
+      <underlying-index>studnew_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="68" parent="25" name="name">
+      <state-number>848</state-number>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="69" parent="25" name="lastname">
+      <state-number>848</state-number>
+      <data-type>text|0</data-type>
+    </column>
+  </database-model>
+</dataSource>
