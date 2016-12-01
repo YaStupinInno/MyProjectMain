@@ -1,5 +1,7 @@
 package ru.innopolis.models.pojo;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Set;
@@ -7,14 +9,20 @@ import java.util.Set;
 /**
  * Created by ADMIN on 28.11.2016.
  */
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
 
-public class User {
+    @Id
+    @SequenceGenerator(name = "USING_SEQ", sequenceName = "using_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "USING_SEQ", strategy = GenerationType.SEQUENCE)
     private int id;
-    private String login;
-    private String pass;
-    private String sals;
-    private String nameFull;
-    Topics[] setTopics;
+    private String login="VasyaVerevkin";
+    private String pass="VasyaVerevkin";
+    private String sals="VasyaVerevkin";
+    private String nameFull="VasyaVerevkin";
+
+    //Topics[] setTopics;
 
     public User() {
     }
@@ -36,7 +44,7 @@ public class User {
         this.pass = pass;
         this.sals = sals;
         this.nameFull = nameFull;
-        this.setTopics = setTopics;
+      //  this.setTopics = setTopics;
     }
 
     public String getLogin() {
@@ -79,13 +87,13 @@ public class User {
         this.nameFull = nameFull;
     }
 
-    public Topics[] getSetTopics() {
+/*    public Topics[] getSetTopics() {
         return setTopics;
     }
 
     public void setSetTopics(Topics[] setTopics) {
         this.setTopics = setTopics;
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -95,8 +103,6 @@ public class User {
                 ", pass='" + pass + '\'' +
                 ", sals='" + sals + '\'' +
                 ", nameFull='" + nameFull + '\'' +
-                ", setTopics=" + setTopics +
                 '}';
     }
-
 }

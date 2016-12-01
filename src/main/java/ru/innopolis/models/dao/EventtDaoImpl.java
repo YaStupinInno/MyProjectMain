@@ -1,5 +1,6 @@
 package ru.innopolis.models.dao;
 
+import org.springframework.stereotype.Repository;
 import ru.innopolis.anyUtil.conectBD.ConnectBD;
 
 import ru.innopolis.models.pojo.Eventt;
@@ -16,6 +17,7 @@ import java.util.List;
 /**
  * Created by ADMIN on 30.11.2016.
  */
+@Repository
 public class EventtDaoImpl implements EventtDao {
 
     ConnectBD connectBD;

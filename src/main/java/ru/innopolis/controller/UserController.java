@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "users", method = RequestMethod.GET)
-    public String listBooks(Model model){
+    public String listUsers(Model model){
         model.addAttribute("user", new User());
         model.addAttribute("listUsers", this.userService.listUsers());
 
@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public String addBook(@ModelAttribute("user") User user){
+    public String addUser(@ModelAttribute("user") User user){
         if(user.getId() == 0){
             this.userService.addUser(user);
         }else {
@@ -59,4 +59,16 @@ public class UserController {
         model.addAttribute("user", this.userService.getUserById(id));
         return "userdata";
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String logIn(@ModelAttribute("user") User user){
+        if(user.getId() == 0){
+            this.userService.addUser(user);
+        }else {
+            this.userService.updateUser(user);
+        }
+        return "redirect:/users";
+    }
+
+
 }

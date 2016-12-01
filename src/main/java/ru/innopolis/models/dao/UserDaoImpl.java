@@ -1,6 +1,7 @@
 package ru.innopolis.models.dao;
 
 
+import org.springframework.stereotype.Repository;
 import ru.innopolis.anyUtil.conectBD.ConnectBD;
 import ru.innopolis.models.pojo.User;
 
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by ADMIN on 28.11.2016.
  */
-
+@Repository
 public class UserDaoImpl implements UserDao {
     ConnectBD connectBD;
 
