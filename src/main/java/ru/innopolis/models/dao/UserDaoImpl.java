@@ -21,10 +21,6 @@ public class UserDaoImpl implements UserDao {
         this.connectBD = connectBD;
     }
 
-    public UserDaoImpl(ConnectBD connectBD) {
-        this.connectBD = connectBD;
-    }
-
     @Override
     public void addUser(User user) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(

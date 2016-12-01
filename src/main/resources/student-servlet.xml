@@ -34,4 +34,15 @@
         <property name="userDao" ref="userDao"/>
     </bean>
     <!-- ========================= -->
+
+    <!-- Основные бины Юзера-->
+
+    <bean id="eventtDao" class="ru.innopolis.models.dao.EventtDaoImpl">
+        <property name="connectBD" ref="connectBD"/>
+    </bean>
+
+    <bean id="eventtServis" class="ru.innopolis.models.servis.EventtServisImpl">
+        <property name="eventtDao" ref="eventtDao"/>
+    </bean>
+    <!-- ========================= -->
 </beans>

@@ -38,4 +38,8 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.0.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.0.RELEASE'
 
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.5.Final'
+
+
 }

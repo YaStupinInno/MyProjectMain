@@ -13,9 +13,6 @@ import java.util.List;
 public class UserServisImpl implements UserServis {
     private UserDao userDao;
 
-    public UserServisImpl(UserDao userDao) {
-        this.userDao = userDao;
-    }
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;

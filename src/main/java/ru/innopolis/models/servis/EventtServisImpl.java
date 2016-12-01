@@ -15,6 +15,10 @@ import java.util.List;
 public class EventtServisImpl implements EventtServis {
     EventtDao eventtDao;
 
+    public void setEventtDao(EventtDao eventtDao) {
+        this.eventtDao = eventtDao;
+    }
+
     @Override
     public void addEventt(Eventt eventt) {
         eventtDao.addEventt(eventt);
