@@ -3,6 +3,7 @@ package ru.innopolis.models.servis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import ru.innopolis.anyUtil.passHash.PassHashSals;
 import ru.innopolis.models.dao.UserDao;
 import ru.innopolis.models.pojo.User;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Service
 public class UserServisImpl implements UserServis {
 
+    //private PassHashSals passHashSals;
     private UserDao userDao;
     @Autowired(required = true)
     public void setUserDao(UserDao userDao) {
@@ -23,6 +25,10 @@ public class UserServisImpl implements UserServis {
     @Override
     //@Transactional
     public void addUser(User user) {
+      /*  String sals=  passHashSals.getSals();
+        user.setPass(user.getPass()+sals.hashCode());
+        user.setSals(sals);
+        */
         this.userDao.addUser(user);
     }
 
@@ -43,6 +49,13 @@ public class UserServisImpl implements UserServis {
 
     @Override
     public User isThereUser(User user) {
+        // user с простым паролем
+        User usFromBD = this.userDao.getUserByLogin(user.getLogin());
+        if( usFromBD.getPass().equals((user.getPass()+usFromBD.getSals()).hashCode())){
+            return usFromBD;
+        }
+        //--------------
+        System.out.println("no");
         return this.userDao.isThereUser(user);
     }
 

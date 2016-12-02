@@ -20,7 +20,7 @@ public class User implements Serializable {
     private String login="VasyaVerevkin";
     private String pass="VasyaVerevkin";
     private String sals="VasyaVerevkin";
-    private String nameFull="VasyaVerevkin";
+    private String nameFull;
 
     private int statys; // 0-пустой юзер 1 -Админ 2-простой юзер
     //Topics[] setTopics;

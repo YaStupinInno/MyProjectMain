@@ -21,7 +21,5 @@ public interface UserDao {
 
     public User isThereUser(User user);
 
-
     public List<User> listUsers();
-
 }
