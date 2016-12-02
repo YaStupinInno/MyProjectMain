@@ -1,5 +1,7 @@
 package ru.innopolis.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import ru.innopolis.anyUtil.conectBD.ConnectBDImpl;
 import ru.innopolis.models.pojo.User;
 import ru.innopolis.models.servis.UserServis;
 
@@ -17,6 +20,7 @@ import ru.innopolis.models.servis.UserServis;
 @Controller
 public class UserController {
 
+    private final static Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserServis userService;
     @Autowired(required = true)
    // @Qualifier(value = "userService")
@@ -26,19 +30,21 @@ public class UserController {
 
     @RequestMapping(value = "users", method = RequestMethod.GET)
     public String listUsers(Model model){
+        logger.info("запрашиваем всех пользователей из базы");
         model.addAttribute("user", new User());
         model.addAttribute("listUsers", this.userService.listUsers());
-
         return "users";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView reg(/*@ModelAttribute("user") User user*/){
+        logger.info("клик по регистрации");
         return new ModelAndView("view/registration", "user", new User());
     }
 
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
     public ModelAndView addUser(@ModelAttribute("user") User user){
+        logger.info("клик по добавить пользователя");
         if(user.getId() == 0){
             this.userService.addUser(user);
         }else {
@@ -50,6 +56,7 @@ public class UserController {
 
     @RequestMapping("/removestud/{id}")
     public String removeUser(@PathVariable("id") int id){
+        logger.info("удаляем пользователя по ИД ");
         this.userService.removeUser(id);
         return "redirect:/users";
     }

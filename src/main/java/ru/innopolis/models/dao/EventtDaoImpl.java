@@ -1,8 +1,11 @@
 package ru.innopolis.models.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.innopolis.anyUtil.conectBD.ConnectBD;
 
+import ru.innopolis.anyUtil.conectBD.ConnectBDImpl;
 import ru.innopolis.models.pojo.Eventt;
 import ru.innopolis.models.pojo.Topics;
 import ru.innopolis.models.pojo.User;
@@ -17,8 +20,13 @@ import java.util.List;
 /**
  * Created by ADMIN on 30.11.2016.
  */
+
+/**
+ * Дао для работы с БД, методы Мероприятия
+ */
 @Repository
 public class EventtDaoImpl implements EventtDao {
+    private final static Logger logger = LoggerFactory.getLogger(EventtDaoImpl.class);
 
     ConnectBD connectBD;
 
@@ -26,6 +34,11 @@ public class EventtDaoImpl implements EventtDao {
         this.connectBD = connectBD;
     }
 
+    /**
+     * Метод добавления нового мероприятия в базу
+     *
+     * @param eventt
+     */
     @Override
     public void addEventt(Eventt eventt) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
@@ -36,11 +49,15 @@ public class EventtDaoImpl implements EventtDao {
             pstmt.setString(4, eventt.getDescription());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
-
     }
 
+    /**
+     * Метод внесения изменений в уже существующее мероприятие
+     *
+     * @param eventt
+     */
     @Override
     public void updateEventt(Eventt eventt) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
@@ -52,10 +69,14 @@ public class EventtDaoImpl implements EventtDao {
             pstmt.setInt(5, eventt.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
     }
 
+    /**
+     * Метод удаления мероприятия по ИД
+     * @param id
+     */
     @Override
     public void removeEventt(int id) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
@@ -63,26 +84,36 @@ public class EventtDaoImpl implements EventtDao {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
-
     }
 
+    /**
+     * Метод получения мероприятия по ИД
+     * вернет найденное мероприятие
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Eventt getEventtById(int id) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
-                "SELECT * FROM events where id=?")){
+                "SELECT * FROM events where id = ?")){
             pstmt.setInt(1, id);
             ResultSet rsult = pstmt.executeQuery();
             if(rsult.next()) {
                 return new Eventt(rsult);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
         return null;
     }
 
+    /**
+     * Метод вернет все существующие мероприятия
+     * @return
+     */
     @Override
     public List<Eventt> listEventts() {
         List<User> list = new ArrayList<>();
@@ -93,18 +124,24 @@ public class EventtDaoImpl implements EventtDao {
                 list.add(new User(rsult));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
         return null;
     }
 
+    /**
+     * Метод вернет все мероприятия по нужной дате
+     *
+     * @param date
+     * @return
+     */
     @Override
     public List<Eventt> listEventts(Date date) {
         List<User> list = new ArrayList<>();
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
                 "SELECT * FROM events where date= ? ")){
 
-            pstmt.setDate(1 , new java.sql.Date(date.getTime()));
+            //pstmt.setDate(1 , new java.sql.Date(date.getTime()));
 
 
 
@@ -113,16 +150,28 @@ public class EventtDaoImpl implements EventtDao {
                 list.add(new User(rsult));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
         return null;
     }
 
+    /**
+     * Метод возвращает список мероприятий по заданной тематике
+     *
+     * @param topic
+     * @return
+     */
     @Override
     public List<Eventt> listEventts(Topics topic) {
         return null;
     }
 
+    /**
+     * Метод вернет список мароприятий заданного пользователя
+     *
+     * @param user
+     * @return
+     */
     @Override
     public List<Eventt> listEventts(User user) {
         return null;

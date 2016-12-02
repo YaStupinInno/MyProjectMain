@@ -7,6 +7,11 @@ import java.util.Date;
 /**
  * Created by ADMIN on 30.11.2016.
  */
+
+/**
+ * Класс описания Мероприятия
+ * ид, дата проведения, название, тема, описание
+ */
 public class Eventt {
     int id;
     Date data;

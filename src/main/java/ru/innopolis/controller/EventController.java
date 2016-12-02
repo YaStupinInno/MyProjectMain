@@ -14,7 +14,9 @@ import java.util.List;
  * Created by ADMIN on 28.11.2016.
  */
 
-
+/**
+ * Класс контроллера для Event
+ */
 public class EventController {
     private EventtServis eventtServis;
 /*

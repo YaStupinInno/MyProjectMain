@@ -7,6 +7,9 @@ import javax.persistence.Persistence;
 /**
  * Created by ADMIN on 01.12.2016.
  */
+/**
+ * Класс для тестирования УДАЛИТЬ
+ */
 public class HibernateUtil {
     private static final String PERSISTENT_UNIT_NAME = "item-manager-pu";
 

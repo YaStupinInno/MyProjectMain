@@ -8,8 +8,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Класс пула конектов который хранит только 1 коннект
+ */
 @Component
 public class ConnectBDImpl implements ConnectBD {
+
     private final static Logger logger = LoggerFactory.getLogger(ConnectBDImpl.class);
     private Connection conection = null; // хранится подключение
 
@@ -35,7 +39,7 @@ public class ConnectBDImpl implements ConnectBD {
                     logger.info("create new connect and get");
                     return conection;
                 } catch (ClassNotFoundException e) {
-                    logger.info("error Data Base");
+                    logger.info("ClassNotFoundException");
                 }
             } else {
                 Connection tempconection = conection;
@@ -62,7 +66,7 @@ public class ConnectBDImpl implements ConnectBD {
                 try {
                     conection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    logger.info("SQLException");
                 }
             }
             logger.info("add conect");

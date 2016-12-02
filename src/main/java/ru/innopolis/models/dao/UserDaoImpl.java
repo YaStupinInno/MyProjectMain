@@ -1,6 +1,8 @@
 package ru.innopolis.models.dao;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.innopolis.anyUtil.conectBD.ConnectBD;
@@ -15,14 +17,24 @@ import java.util.List;
 /**
  * Created by ADMIN on 28.11.2016.
  */
+
+/**
+ * Класс для работы с БД и обьектами Юзер
+ */
 @Repository
 public class UserDaoImpl implements UserDao {
+    private final static Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
+
     ConnectBD connectBD;
     @Autowired(required = true)
     public void setConnectBD(ConnectBD connectBD) {
         this.connectBD = connectBD;
     }
 
+    /**
+     * Метод добавления юзера нового в базу
+     * @param user
+     */
     @Override
     public void addUser(User user) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
@@ -33,10 +45,15 @@ public class UserDaoImpl implements UserDao {
             pstmt.setString(4, user.getNameFull());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
     }
 
+    /**
+     * Метод внесения изменений в старом позователе
+     *
+     * @param user
+     */
     @Override
     public void updateUser(User user) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
@@ -48,10 +65,14 @@ public class UserDaoImpl implements UserDao {
             pstmt.setInt(5, user.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
     }
 
+    /**
+     * Метод удаления пользователя по ИД
+     * @param id
+     */
     @Override
     public void removeUser(int id) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
@@ -59,10 +80,15 @@ public class UserDaoImpl implements UserDao {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
     }
 
+    /**
+     * Метод вернет пользователя по ИД
+     * @param id
+     * @return
+     */
     @Override
     public User getUserById(int id) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
@@ -73,11 +99,17 @@ public class UserDaoImpl implements UserDao {
                 return new User(rsult);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
         return null;
     }
 
+    /**
+     * Метод вернет из базы пользователя по заданному  логину
+     * для работы с Входом пользователя, на входе строка
+     * @param login
+     * @return
+     */
     @Override
     public User getUserByLogin(String login) {
 
@@ -89,11 +121,17 @@ public class UserDaoImpl implements UserDao {
                 return new User(rsult);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
         return null;
     }
 
+    /**
+     * Метод вернет из базы пользователя по заданному  логину
+     * для работы с Входом пользователя на входе Юзер
+     * @param user
+     * @return
+     */
     @Override
     public User isThereUser(User user) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
@@ -104,11 +142,16 @@ public class UserDaoImpl implements UserDao {
                 return new User(rsult);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
         return null;
     }
 
+    /**
+     * Метод вернет из базы пользователей всех
+     *
+     * @return
+     */
     @Override
     public List<User> listUsers() {
         List<User> list = new ArrayList<>();
@@ -119,7 +162,7 @@ public class UserDaoImpl implements UserDao {
                 list.add(new User(rsult));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("SQLException");
         }
         return list;
     }

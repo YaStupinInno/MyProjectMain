@@ -9,6 +9,12 @@ import java.util.Set;
 /**
  * Created by ADMIN on 28.11.2016.
  */
+
+/**
+ * Класс описания Юзера
+ * ид, логин, пароль(захешированн с солью), соль, полное имя
+ *
+ */
 @Entity
 @Table(name = "users")
 public class User implements Serializable {

@@ -9,6 +9,10 @@ import ru.innopolis.models.servis.UserServis;
 /**
  * Created by ADMIN on 28.11.2016.
  */
+
+/**
+ * Класс для тестирования УДАЛИТЬ
+ */
 public class TestDell {
     public static void main(String[] args) {
 
