@@ -17,7 +17,10 @@ public interface UserDao {
 
     public User getUserById(int id);
 
+    public User getUserByLogin(String login);
+
     public User isThereUser(User user);
+
 
     public List<User> listUsers();
 

@@ -21,13 +21,8 @@
       <form:label path="pass">Password:</form:label>
       <form:password path="pass" />
 
-
-<%--
-      <input name="username" type="text" class="form-control" placeholder="Username" autofocus="true"/>
-        <input name="password" type="password" class="form-control" placeholder="Password"/>--%>
-
         <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button><br>
-        <h4 class="text-center"><a href="${contextPath}/registration">Registration</a></h4>
+        <h4 class="text-center"><a href="registration">Registration</a></h4>
     </form:form>
 
   </div>

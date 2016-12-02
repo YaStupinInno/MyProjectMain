@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import ru.innopolis.models.pojo.User;
 import ru.innopolis.models.servis.UserServis;
 
@@ -31,14 +32,20 @@ public class UserController {
         return "users";
     }
 
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public ModelAndView reg(/*@ModelAttribute("user") User user*/){
+        return new ModelAndView("view/registration", "user", new User());
+    }
+
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute("user") User user){
+    public ModelAndView addUser(@ModelAttribute("user") User user){
         if(user.getId() == 0){
             this.userService.addUser(user);
         }else {
             this.userService.updateUser(user);
         }
-        return "redirect:/users";
+        return new ModelAndView("view/myacc", "user", user);
+        //return "myacc";
     }
 
     @RequestMapping("/removestud/{id}")
@@ -69,6 +76,4 @@ public class UserController {
         }
         return "redirect:/users";
     }
-
-
 }

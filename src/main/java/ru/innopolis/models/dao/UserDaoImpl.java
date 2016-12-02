@@ -79,6 +79,22 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User getUserByLogin(String login) {
+
+        try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
+                "SELECT * FROM users where login=?")){
+            pstmt.setString(1, login);
+            ResultSet rsult = pstmt.executeQuery();
+            if(rsult.next()) {
+                return new User(rsult);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public User isThereUser(User user) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
                 "SELECT * FROM users where login=?")){
