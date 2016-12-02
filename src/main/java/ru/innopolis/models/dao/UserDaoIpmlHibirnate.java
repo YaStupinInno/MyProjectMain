@@ -46,6 +46,11 @@ public class UserDaoIpmlHibirnate implements UserDao {
         return user;
     }
 
+    @Override
+    public User isThereUser(User user) {
+        return null;
+    }
+
     @Override//ok
     public List<User> listUsers() {
 

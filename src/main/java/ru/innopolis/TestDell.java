@@ -2,16 +2,9 @@ package ru.innopolis;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.innopolis.models.dao.EventtDaoImpl;
 import ru.innopolis.models.dao.UserDaoIpmlHibirnate;
-import ru.innopolis.models.pojo.Eventt;
-import ru.innopolis.models.pojo.Topics;
 import ru.innopolis.models.pojo.User;
 import ru.innopolis.models.servis.UserServis;
-
-import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.util.*;
 
 /**
  * Created by ADMIN on 28.11.2016.
@@ -21,7 +14,7 @@ public class TestDell {
 
 
 
-       ApplicationContext applicationContext = new ClassPathXmlApplicationContext(new String[]{"student-servlet.xml"});
+       ApplicationContext applicationContext = new ClassPathXmlApplicationContext(new String[]{"WEB-INF/student-servlet.xml"});
         UserServis userServis = (UserServis) applicationContext.getBean("userServis");
 
         UserDaoIpmlHibirnate hib= new UserDaoIpmlHibirnate();

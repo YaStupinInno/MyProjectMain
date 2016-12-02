@@ -1,6 +1,7 @@
 package ru.innopolis.models.dao;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.innopolis.anyUtil.conectBD.ConnectBD;
 import ru.innopolis.models.pojo.User;
@@ -17,7 +18,7 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
     ConnectBD connectBD;
-
+    @Autowired(required = true)
     public void setConnectBD(ConnectBD connectBD) {
         this.connectBD = connectBD;
     }
@@ -25,7 +26,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void addUser(User user) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
-                "INSERT INTO studnew (login, pass, sals, namefull)VALUES (?,?,?,?)")){
+                "INSERT INTO users (login, pass, sals, namefull)VALUES (?,?,?,?)")){
             pstmt.setString(1, user.getLogin());
             pstmt.setString(2, user.getPass());
             pstmt.setString(3, user.getSals());
@@ -39,7 +40,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updateUser(User user) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
-                "UPDATE studnew SET login = ?, pass= ?, sals= ?, namefull= ? WHERE id = ?;")){
+                "UPDATE users SET login = ?, pass= ?, sals= ?, namefull= ? WHERE id = ?;")){
             pstmt.setString(1, user.getLogin());
             pstmt.setString(2, user.getPass());
             pstmt.setString(3, user.getSals());
@@ -54,7 +55,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void removeUser(int id) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
-                "DELETE FROM studnew WHERE id = ?;")){
+                "DELETE FROM users WHERE id = ?;")){
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -65,8 +66,23 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getUserById(int id) {
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
-                "SELECT * FROM studnew where id=?")){
+                "SELECT * FROM users where id=?")){
             pstmt.setInt(1, id);
+            ResultSet rsult = pstmt.executeQuery();
+            if(rsult.next()) {
+                return new User(rsult);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public User isThereUser(User user) {
+        try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
+                "SELECT * FROM users where login=?")){
+            pstmt.setString(1, user.getLogin());
             ResultSet rsult = pstmt.executeQuery();
             if(rsult.next()) {
                 return new User(rsult);
@@ -81,7 +97,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> listUsers() {
         List<User> list = new ArrayList<>();
         try (PreparedStatement pstmt = connectBD.getConect().prepareStatement(
-                "SELECT * FROM studnew")){
+                "SELECT * FROM users")){
             ResultSet rsult = pstmt.executeQuery();
             while(rsult.next()) {
                 list.add(new User(rsult));

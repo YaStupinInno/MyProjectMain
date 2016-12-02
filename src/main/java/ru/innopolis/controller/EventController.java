@@ -15,7 +15,6 @@ import java.util.List;
  */
 
 
-@Controller
 public class EventController {
     private EventtServis eventtServis;
 /*

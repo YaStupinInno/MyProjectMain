@@ -2,11 +2,13 @@ package ru.innopolis.anyUtil.conectBD;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
+@Component
 public class ConnectBDImpl implements ConnectBD {
     private final static Logger logger = LoggerFactory.getLogger(ConnectBDImpl.class);
     private Connection conection = null; // хранится подключение

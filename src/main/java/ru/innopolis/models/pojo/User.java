@@ -22,6 +22,7 @@ public class User implements Serializable {
     private String sals="VasyaVerevkin";
     private String nameFull="VasyaVerevkin";
 
+    private int statys; // 0-пустой юзер 1 -Админ 2-простой юзер
     //Topics[] setTopics;
 
     public User() {
@@ -33,17 +34,20 @@ public class User implements Serializable {
             this.pass = rsult.getString(3);
             this.sals = rsult.getString(4);
             this.nameFull = rsult.getString(5);
+            this.statys = rsult.getInt(6);
             //this.setTopics = rsult.getArray(6);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public User(int id, String login, String pass, String sals, String nameFull, Topics[] setTopics) {
+    public User(int id, String login, String pass, String sals, String nameFull, Topics[] setTopics, int statys) {
         this.id = id;
         this.login = login;
         this.pass = pass;
         this.sals = sals;
+
         this.nameFull = nameFull;
+        this.statys = statys;
       //  this.setTopics = setTopics;
     }
 
@@ -95,6 +99,14 @@ public class User implements Serializable {
         this.setTopics = setTopics;
     }*/
 
+    public int getStatys() {
+        return statys;
+    }
+
+    public void setStatys(int statys) {
+        this.statys = statys;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -103,6 +115,7 @@ public class User implements Serializable {
                 ", pass='" + pass + '\'' +
                 ", sals='" + sals + '\'' +
                 ", nameFull='" + nameFull + '\'' +
+                ", statys=" + statys +
                 '}';
     }
 }

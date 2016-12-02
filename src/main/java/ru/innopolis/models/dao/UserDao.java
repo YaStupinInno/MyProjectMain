@@ -17,6 +17,8 @@ public interface UserDao {
 
     public User getUserById(int id);
 
+    public User isThereUser(User user);
+
     public List<User> listUsers();
 
 }

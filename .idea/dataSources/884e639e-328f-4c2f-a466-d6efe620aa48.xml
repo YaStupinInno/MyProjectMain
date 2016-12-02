@@ -11,8 +11,8 @@
     <schema id="3" parent="1" name="public">
       <object-id>2200</object-id>
       <visible>1</visible>
-      <introspection-state-number>1007</introspection-state-number>
-      <introspection-timestamp>2016-12-01.16:54:29.347</introspection-timestamp>
+      <introspection-state-number>1033</introspection-state-number>
+      <introspection-timestamp>2016-12-02.11:17:31.719</introspection-timestamp>
     </schema>
     <schema id="4" parent="1" name="pg_catalog">
       <object-id>11</object-id>
@@ -105,7 +105,7 @@
     <table id="28" parent="3" name="users">
       <object-id>24795</object-id>
       <comment>forMainProgect</comment>
-      <state-number>998</state-number>
+      <state-number>1033</state-number>
     </table>
     <table id="29" parent="3" name="using_seq">
       <object-id>24827</object-id>
@@ -405,39 +405,44 @@ id_std</columns>
       <state-number>998</state-number>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <index id="86" parent="28" name="users_id_uindex">
+    <column id="86" parent="28" name="statys">
+      <state-number>1033</state-number>
+      <data-type>integer|0</data-type>
+      <default-expression>2</default-expression>
+    </column>
+    <index id="87" parent="28" name="users_id_uindex">
       <object-id>24804</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="87" parent="28" name="users_pkey">
+    <index id="88" parent="28" name="users_pkey">
       <object-id>24802</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="88" parent="28" name="users_login_uindex">
+    <index id="89" parent="28" name="users_login_uindex">
       <object-id>24805</object-id>
       <columns>login</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="89" parent="28" name="users_pkey">
+    <key id="90" parent="28" name="users_pkey">
       <object-id>24803</object-id>
       <columns>id</columns>
       <underlying-index>users_pkey</underlying-index>
       <primary>1</primary>
     </key>
-    <column id="90" parent="29" name="next_val">
+    <column id="91" parent="29" name="next_val">
       <state-number>1000</state-number>
       <data-type>numeric|0</data-type>
     </column>
-    <column id="91" parent="30" name="name">
+    <column id="92" parent="30" name="name">
       <state-number>848</state-number>
       <data-type>text|0</data-type>
     </column>
-    <column id="92" parent="30" name="lastname">
+    <column id="93" parent="30" name="lastname">
       <state-number>848</state-number>
       <data-type>text|0</data-type>
     </column>

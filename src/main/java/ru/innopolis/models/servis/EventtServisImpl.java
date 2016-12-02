@@ -1,6 +1,7 @@
 package ru.innopolis.models.servis;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.innopolis.models.dao.EventtDao;
 import ru.innopolis.models.pojo.Eventt;
 import ru.innopolis.models.pojo.Topics;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class EventtServisImpl implements EventtServis {
     EventtDao eventtDao;
-
+    @Autowired(required = true)
     public void setEventtDao(EventtDao eventtDao) {
         this.eventtDao = eventtDao;
     }

@@ -23,7 +23,7 @@
         </property>
     </bean>
 
-<!-- Основные бины Юзера-->
+<!-- Основные бины Юзера и Евента
     <bean id="connectBD" class="ru.innopolis.anyUtil.conectBD.ConnectBDImpl"></bean>
 
     <bean id="userDao" class="ru.innopolis.models.dao.UserDaoImpl">
@@ -33,9 +33,7 @@
     <bean id="userServis" class="ru.innopolis.models.servis.UserServisImpl">
         <property name="userDao" ref="userDao"/>
     </bean>
-    <!-- ========================= -->
 
-    <!-- Основные бины Юзера-->
 
     <bean id="eventtDao" class="ru.innopolis.models.dao.EventtDaoImpl">
         <property name="connectBD" ref="connectBD"/>
@@ -44,5 +42,5 @@
     <bean id="eventtServis" class="ru.innopolis.models.servis.EventtServisImpl">
         <property name="eventtDao" ref="eventtDao"/>
     </bean>
-    <!-- ========================= -->
+     -->
 </beans>
